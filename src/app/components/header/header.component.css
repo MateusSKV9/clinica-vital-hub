@@ -1,0 +1,14 @@
+:host {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  font-size: 1.15em;
+  padding-right: 2px;
+}
