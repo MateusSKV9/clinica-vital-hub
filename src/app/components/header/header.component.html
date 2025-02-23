@@ -1,9 +1,63 @@
-<h1>Clínica VitalHub</h1>
+<a routerLink="/">
+  <h1>Clínica VitalHub</h1>
+</a>
 <nav>
   <ul>
-    <li><a href="">Início</a></li>
-    <li><a href="">Cadastrar</a></li>
-    <li><a href="">Agendamentos</a></li>
-    <li><a href="">Relatórios</a></li>  
+    <li><a routerLink="/">Início</a></li>
+    <li
+      (mouseenter)="showDropDown(1)"
+      (mouseleave)="hideDropDown(1)"
+      class="dropdown"
+    >
+      <span>Cadastrar</span>
+      <div
+        *ngIf="dropdownStates[1]"
+        class="dropdown-content"
+        @dropdownAnimation
+      >
+        <a routerLink="/cadastro/paciente">Paciente</a>
+        <a routerLink="/cadastro/medico">Médico</a>
+        <a routerLink="/cadastro/material">Material</a>
+        <a routerLink="/cadastro/exame">Exame</a>
+        <a routerLink="/cadastro/consulta">Consulta</a>
+      </div>
+    </li>
+    <li
+      (mouseenter)="showDropDown(2)"
+      (mouseleave)="hideDropDown(2)"
+      class="dropdown"
+    >
+      <a routerLink="">Agendamentos</a>
+      <div
+        *ngIf="dropdownStates[2]"
+        class="dropdown-content"
+        @dropdownAnimation
+      >
+        <a routerLink="/agendamento/consulta">Agendamento de Consulta</a>
+        <a routerLink="/agendamento/exame">Agendamento de Exame</a>
+        <a routerLink="/agendamento/visualização-agenda"
+          >Visualização de Agenda</a
+        >
+        <a routerLink="/agendamento/pesquisa-horarios">Pesquisa de horários</a>
+        <a routerLink="/agendamento/consulta">Cancelamento e reagendamento</a>
+      </div>
+    </li>
+    <li
+      (mouseenter)="showDropDown(3)"
+      (mouseleave)="hideDropDown(3)"
+      class="dropdown"
+    >
+      <a routerLink="">Relatórios</a>
+      <div
+        *ngIf="dropdownStates[3]"
+        class="dropdown-content"
+        @dropdownAnimation
+      >
+        <a routerLink="/relatorio/consulta">Relatório de Consulta</a>
+        <a routerLink="/relatorio/exame">Relatório de Exame</a>
+        <a routerLink="/relatorio/visualização-agenda">Relatório financeiro</a>
+        <a routerLink="/relatorio/pesquisa-horarios">Relatório de materiais</a>
+      </div>
+    </li>
   </ul>
 </nav>
