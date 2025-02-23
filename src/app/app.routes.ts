@@ -1,3 +1,22 @@
 import { Routes } from '@angular/router';
+import { HomeComponent } from './components/home/home.component';
+import { PatientFormComponent } from './components/patient-form/patient-form.component';
+import { DoctorFormComponent } from './components/doctor-form/doctor-form.component';
+import { MaterialFormComponent } from './components/material-form/material-form.component';
+import { ExamFormComponent } from './components/exam-form/exam-form.component';
+import { AppointmentFormComponent } from './components/appointment-form/appointment-form.component';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+  { path: '', component: HomeComponent },
+  {
+    path: 'cadastro',
+    children: [
+      { path: 'paciente', component: PatientFormComponent },
+      { path: 'medico', component: DoctorFormComponent },
+      { path: 'material', component: MaterialFormComponent },
+      { path: 'exame', component: ExamFormComponent },
+      { path: 'consulta', component: AppointmentFormComponent },
+    ],
+  },
+  
+];
