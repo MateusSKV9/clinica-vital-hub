@@ -1,60 +1,44 @@
 <form>
   <fieldset>
     <legend>Dados pessoais</legend>
-    <div>
-      <label for="name">Nome</label>
-      <input type="text" name="name" id="name" />
+
+    <div class="flex-row">
+      <div class="form-group">
+        <label for="name">Nome</label>
+        <input type="text" name="name" id="name" />
+      </div>
+      <div class="form-group">
+        <label for="specialty">Especialidade</label>
+        <input type="text" name="specialty" id="specialty" />
+      </div>
     </div>
-    <div>
-      <label for="specialty">Especialidade</label>
-      <input type="text" name="specialty" id="specialty" />
+
+    <div class="flex-row">
+      <div class="flex-column">
+        <div class="form-group">
+          <label for="crm">CRM</label>
+          <input type="number" name="crm" id="crm" />
+        </div>
+        
+        <div class="flex-row">
+          <div class="form-group">
+            <label for="hour">Hoários de Atendimentos</label>
+            <input type="time" name="hour" id="hour" />
+          </div>
+          <div class="form-group">
+            <label for="value-appointment">Valor da Consulta Particular</label>
+            <input type="number" name="value-appointment" id="value-appointment" />
+          </div>
+        </div>
+      </div>
+
+      <textarea
+        name="contat"
+        id="contat"
+        placeholder="Digite os contatos"
+      ></textarea>
     </div>
-    <div>
-      <label for="crm">CRM</label>
-      <input type="number" name="crm" id="crm" />
-    </div>
-    <div>
-      <label for="hour">Hoários de Atendimentos</label>
-      <input type="number" name="hour" id="hour" />
-    </div>
-    <div>
-      <label for="value-appointment">Valor da Consulta Particular</label>
-      <input type="number" name="value-appointment" id="value-appointment" />
-    </div>
-    <textarea
-      name="contat"
-      id="contat"
-      placeholder="Digite os contatos"
-    ></textarea>
   </fieldset>
 
-  <!-- <fieldset>
-    <legend>Endereço</legend>
-    <div>
-      <label for="name">Nome</label>
-      <input type="text" name="name" id="name" />
-    </div>
-    <div>
-      <label for="specialty">Especialidade</label>
-      <input type="text" name="specialty" id="specialty" />
-    </div>
-    <div>
-      <label for="crm">CRM</label>
-      <input type="number" name="crm" id="crm" />
-    </div>
-    <div>
-      <label for="hour">Hoários de Atendimentos</label>
-      <input type="number" name="hour" id="hour" />
-    </div>
-    <div>
-      <label for="value-appointment">Valor da Consulta Particular</label>
-      <input type="number" name="value-appointment" id="value-appointment" />
-    </div>
-    <textarea
-      name="contat"
-      id="contat"
-      placeholder="Digite os contatos"
-    ></textarea>
-  </fieldset> -->
   <app-address-form></app-address-form>
 </form>
