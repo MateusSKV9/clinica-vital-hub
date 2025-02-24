@@ -1,0 +1,46 @@
+:host {
+  display: block;
+  margin: 0 auto;
+  margin-top: 15px;
+}
+
+fieldset {
+  padding: 10px 15px;
+  border-radius: 7px;
+  background-color: rgba(245, 245, 245);
+  color: black;
+}
+
+legend {
+  color: white;
+  font-size: 1.7em;
+  background-color: black;
+  padding: 5px;
+  border-radius: 7px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  gap: 3px;
+}
+
+.container-form-group {
+  display: flex;
+  gap: 20px;
+}
+
+input {
+  padding: 7px;
+  border-radius: 7px;
+  border: 1px solid black;
+  margin-bottom: 10px;
+}
+
+textarea {
+  border-radius: 7px;
+  width: 100%;
+  padding: 7px;
+  height: 100px;
+}
