@@ -1,12 +1,21 @@
 :host {
+  position: relative;
   width: 100%;
   min-height: 100vh;
 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 main {
   padding: 20px;
+  margin-top: 80px;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
