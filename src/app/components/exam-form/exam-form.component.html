@@ -1,1 +1,61 @@
-<p>exam-form works!</p>
+<h1 class="title">
+  <i class="fa-solid fa-file-medical"></i>
+  Exame
+</h1>
+
+<form>
+  <fieldset>
+    <legend>Dados</legend>
+
+    <div class="flex-row">
+      <div class="form-group">
+        <label for="patient">Paciente</label>
+        <select name="patient" id="patient">
+          <option value="">Selecione um paciente</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="exam-name">Nome do exame</label>
+        <input type="text" name="exam-name" id="exam-name" />
+      </div>
+    </div>
+
+    <div class="flex-row">
+      <div class="form-group">
+        <label for="exam-type">Tipo de exame</label>
+        <select name="exam-type" id="exam-type">
+          <option value="">Selecione um tipo</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="price">Valor particula</label>
+        <input type="number" name="price" id="price" />
+      </div>
+    </div>
+
+    <div class="flex-row">
+      <div class="form-group">
+        <label for="description">descrição</label>
+        <textarea
+          name="description"
+          id="description"
+          placeholder="Digite a descrição"
+        ></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="materials">Materiais utilizados</label>
+        <select name="materials" id="materials">
+          <option value="">Selecione um tipo</option>
+        </select>
+      </div>
+    </div>
+  </fieldset>
+
+  <div class="container-form-buttons">
+    <app-clear-button></app-clear-button>
+    <app-register-button></app-register-button>
+  </div>
+</form>
