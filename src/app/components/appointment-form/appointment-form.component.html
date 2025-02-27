@@ -1,1 +1,82 @@
-<p>appointment-form works!</p>
+<h1 class="title">
+  <i class="fa-solid fa-file-medical"></i>
+  Consulta
+</h1>
+
+<form>
+  <fieldset>
+    <legend>Dados</legend>
+
+    <div class="flex-row">
+      <div class="form-group">
+        <label for="doctor">Médico</label>
+        <select name="doctor" id="doctor">
+          <option value="">Selecionar médico</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="patient">Selecionar paciente</label>
+        <select name="patient" id="patient">
+          <option value="">Selecionar médico</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="flex-row">
+      <div class="form-group">
+        <label for="appointment-type">Tipo de Consulta</label>
+        <select name="appointment-type" id="appointment-type">
+          <option value="">Selecione um tipo</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="complaint">Queixa do paciente</label>
+        <input type="text" name="complaint" id="complaint" />
+      </div>
+
+      <div class="form-group">
+        <label for="health-insurance">Convênio</label>
+        <select name="health-insurance" id="health-insurance">
+          <option value="">Selecione um plano</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="flex-row">
+      <div class="form-group">
+        <label for="date">Data</label>
+        <input type="date" name="date" id="date" />
+      </div>
+
+      <div class="form-group">
+        <label for="hour">Horário</label>
+        <input type="date" name="hour" id="hour" />
+      </div>
+
+      <div class="form-group">
+        <label for="materials">Materiais utilizados</label>
+        <select name="materials" id="materials">
+          <option value="">Selecione um tipo</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="flex-row">
+      <div class="form-group">
+        <label for="observations">Observações</label>
+        <textarea
+          name="observations"
+          id="observations"
+          placeholder="Digite a descrição"
+        ></textarea>
+      </div>
+    </div>
+  </fieldset>
+
+  <div class="container-form-buttons">
+    <app-clear-button></app-clear-button>
+    <app-register-button></app-register-button>
+  </div>
+</form>
