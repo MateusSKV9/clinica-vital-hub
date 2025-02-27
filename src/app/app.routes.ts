@@ -28,9 +28,12 @@ export const routes: Routes = [
     children: [
       { path: 'consulta', component: AppointmentSchedulingComponent },
       { path: 'exame', component: ExamSchedulingComponent },
-      { path: 'visualizacao_agenda', component: ScheduleViewComponent },
-      { path: 'pesquisa_horarios', component: ScheduleSearchComponent },
-      { path: 'cancelamento_reagendamento', component: CancellationReschedulingComponent },
+      { path: 'visualizacao-agenda', component: ScheduleViewComponent },
+      { path: 'pesquisa-horarios', component: ScheduleSearchComponent },
+      {
+        path: 'cancelamento-reagendamento',
+        component: CancellationReschedulingComponent,
+      },
     ],
   },
 ];
