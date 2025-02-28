@@ -10,6 +10,10 @@ import { ExamSchedulingComponent } from './components/exam-scheduling/exam-sched
 import { ScheduleViewComponent } from './components/schedule-view/schedule-view.component';
 import { ScheduleSearchComponent } from './components/schedule-search/schedule-search.component';
 import { CancellationReschedulingComponent } from './components/cancellation-rescheduling/cancellation-rescheduling.component';
+import { ConsultationReportComponent } from './components/consultation-report/consultation-report.component';
+import { ExaminationReportComponent } from './components/examination-report/examination-report.component';
+import { FinancialReportComponent } from './components/financial-report/financial-report.component';
+import { MaterialsReportComponent } from './components/materials-report/materials-report.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -34,6 +38,15 @@ export const routes: Routes = [
         path: 'cancelamento-reagendamento',
         component: CancellationReschedulingComponent,
       },
+    ],
+  },
+  {
+    path: 'relatorio',
+    children: [
+      { path: 'consulta', component: ConsultationReportComponent },
+      { path: 'exame', component: ExaminationReportComponent },
+      { path: 'financeiro', component: FinancialReportComponent },
+      { path: 'materiais', component: MaterialsReportComponent },
     ],
   },
 ];
