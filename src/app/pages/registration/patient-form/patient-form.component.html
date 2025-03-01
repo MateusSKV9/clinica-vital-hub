@@ -3,25 +3,36 @@
   Paciente
 </h1>
 
-<form>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
   <fieldset>
     <legend>Dados pessoais</legend>
 
     <div class="flex-row">
       <div class="form-group">
         <label for="name">Nome</label>
-        <input type="text" name="name" id="name" placeholder="Digite o nome" />
+        <input
+          formControlName="name"
+          type="text"
+          name="name"
+          id="name"
+          placeholder="Digite o nome"
+        />
       </div>
       <div class="form-group">
-        <label for="data_nasc">Data de Nascimento</label>
-        <input type="date" name="data_nasc" id="data_nasc" />
+        <label for="dateOfBirth">Data de Nascimento</label>
+        <input
+          formControlName="dateOfBirth"
+          type="date"
+          name="dateOfBirth"
+          id="dateOfBirth"
+        />
       </div>
     </div>
 
     <div class="flex-row">
       <div class="form-group">
-        <label for="tipo_sanguineo">Tipo sanguíneo</label>
-        <select name="tipo_sanguineo" id="tipo_sanguineo">
+        <label for="bloodType">Tipo sanguíneo</label>
+        <select formControlName="bloodType" name="bloodType" id="bloodType">
           <option disabled selected value="">Selecione um tipo</option>
         </select>
       </div>
@@ -29,6 +40,7 @@
       <div class="form-group">
         <label for="phone">Telefone</label>
         <input
+          formControlName="phone"
           type="number"
           name="phone"
           id="phone"
@@ -36,8 +48,12 @@
         />
       </div>
       <div class="form-group">
-        <label for="Convênio">Convênio</label>
-        <select name="Convênio" id="Convênio">
+        <label for="healthInsurance">Convênio</label>
+        <select
+          formControlName="healthInsurance"
+          name="healthInsurance"
+          id="healthInsurance"
+        >
           <option disabled selected value="">Selecione um tipo</option>
         </select>
       </div>
@@ -45,25 +61,37 @@
 
     <div class="flex-row">
       <div class="form-group">
-        <label for="altura">Altura</label>
+        <label for="height">Altura</label>
         <input
+          formControlName="height"
           type="number"
-          name="altura"
-          id="altura"
+          name="height"
+          id="height"
           placeholder="Em metros"
         />
       </div>
 
       <div class="form-group">
-        <label for="peso">Peso</label>
-        <input type="number" name="peso" id="peso" placeholder="Em Kg" />
+        <label for="weight">Peso</label>
+        <input
+          formControlName="weight"
+          type="number"
+          name="weight"
+          id="weight"
+          placeholder="Em Kg"
+        />
       </div>
     </div>
 
     <div class="flex-row">
       <div class="form-group">
-        <label for="calendar">Agenda</label>
-        <textarea name="calendar" id="calendar" placeholder=""></textarea>
+        <label for="medical-history">Histórico médico</label>
+        <textarea
+          formControlName="medicalHistory"
+          name="medical-history"
+          id="medical-history"
+          placeholder=""
+        ></textarea>
       </div>
     </div>
   </fieldset>

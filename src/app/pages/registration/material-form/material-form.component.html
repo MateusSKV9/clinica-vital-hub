@@ -3,7 +3,7 @@
   Material
 </h1>
 
-<form>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
   <fieldset>
     <legend>Dados</legend>
 
@@ -15,6 +15,7 @@
     <div class="form-group">
       <label for="stock-quantity">Quantidade em estoque</label>
       <input
+        formControlName="stockQuantity"
         type="number"
         name="stock-quantity"
         id="stock-quantity"
@@ -25,6 +26,7 @@
     <div class="form-group">
       <label for="minStockQuantity">Quantidade mínima em estoque</label>
       <input
+        formControlName="minStockQuantity"
         type="number"
         name="minStockQuantity"
         id="minStockQuantity"
@@ -35,6 +37,7 @@
     <div class="form-group">
       <label for="supplier">Fornecedor</label>
       <input
+        formControlName="supplier"
         type="text"
         name="supplier"
         id="supplier"
@@ -45,6 +48,7 @@
     <div class="form-group">
       <label for="price">Preço</label>
       <input
+        formControlName="price"
         type="number"
         name="price"
         id="price"

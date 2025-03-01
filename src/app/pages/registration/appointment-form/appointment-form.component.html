@@ -10,14 +10,14 @@
     <div class="flex-row">
       <div class="form-group">
         <label for="doctor">Médico</label>
-        <select name="doctor" id="doctor">
+        <select formControlName="doctor" name="doctor" id="doctor">
           <option disabled selected value="">Selecionar médico</option>
         </select>
       </div>
 
       <div class="form-group">
         <label for="patient">Selecionar paciente</label>
-        <select name="patient" id="patient">
+        <select formControlName="patient" name="patient" id="patient">
           <option disabled selected value="">Selecionar médico</option>
         </select>
       </div>
@@ -26,7 +26,11 @@
     <div class="flex-row">
       <div class="form-group">
         <label for="appointment-type">Tipo de Consulta</label>
-        <select name="appointment-type" id="appointment-type">
+        <select
+          formControlName="appointmentType"
+          name="appointment-type"
+          id="appointment-type"
+        >
           <option disabled selected value="">Selecione um tipo</option>
         </select>
       </div>
@@ -34,6 +38,7 @@
       <div class="form-group">
         <label for="complaint">Queixa do paciente</label>
         <input
+          formControlName="complaint"
           type="text"
           name="complaint"
           id="complaint"
@@ -43,7 +48,11 @@
 
       <div class="form-group">
         <label for="health-insurance">Convênio</label>
-        <select name="health-insurance" id="health-insurance">
+        <select
+          formControlName="healthInsurance"
+          name="health-insurance"
+          id="health-insurance"
+        >
           <option disabled selected value="">Selecione um plano</option>
         </select>
       </div>
@@ -52,17 +61,17 @@
     <div class="flex-row">
       <div class="form-group">
         <label for="date">Data</label>
-        <input type="date" name="date" id="date" />
+        <input formControlName="date" type="date" name="date" id="date" />
       </div>
 
       <div class="form-group">
         <label for="hour">Horário</label>
-        <input type="date" name="hour" id="hour" />
+        <input formControlName="hour" type="date" name="hour" id="hour" />
       </div>
 
       <div class="form-group">
         <label for="materials">Materiais utilizados</label>
-        <select name="materials" id="materials">
+        <select formControlName="materials" name="materials" id="materials">
           <option disabled selected value="">Selecione um tipo</option>
         </select>
       </div>
@@ -72,6 +81,7 @@
       <div class="form-group">
         <label for="observations">Observações</label>
         <textarea
+          formControlName="observations"
           name="observations"
           id="observations"
           placeholder="Digite a descrição"
