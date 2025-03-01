@@ -1,7 +1,12 @@
 {
   "patients": [],
   "doctors": [],
-  "materials": [],
+  "materials": [
+    {
+      "id": 1,
+      "name": "Agulha"
+    }
+  ],
   "exams": [],
   "appointments": []
 }
