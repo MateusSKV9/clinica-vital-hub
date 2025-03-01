@@ -9,7 +9,7 @@ export interface Patient {
   healthInsurance: string;
   height: number;
   weight: number;
-  contant: string;
+  medicalHistory: string;
 
   adress: Adress;
 }
