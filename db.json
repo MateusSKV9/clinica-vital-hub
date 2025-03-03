@@ -3,8 +3,16 @@
   "doctors": [],
   "materials": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Agulha"
+    },
+    {
+      "id": "bf50",
+      "name": "Soro",
+      "stockQuantity": 2,
+      "minStockQuantity": 2,
+      "supplier": "Robson",
+      "price": 10
     }
   ],
   "exams": [],
