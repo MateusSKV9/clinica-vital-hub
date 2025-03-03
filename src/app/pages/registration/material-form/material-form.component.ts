@@ -64,5 +64,10 @@ export class MaterialFormComponent implements OnInit {
       this.form.markAllAsTouched();
       return;
     }
+
+    const material = this.form.value as Material;
+    this.materialService
+      .create(material)
+      .subscribe(() => console.log('Criado com sucesso!'));
   }
 }
