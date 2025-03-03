@@ -3,57 +3,168 @@
   Material
 </h1>
 
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
+<form [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete="off">
   <fieldset>
     <legend>Dados</legend>
 
-    <div class="form-group">
-      <label for="name">Nome</label>
-      <input type="text" name="name" id="name" placeholder="Digite o nome" />
+    <div class="flex-column">
+      <div class="form-group">
+        <label for="name">Nome</label>
+        <input
+          formControlName="name"
+          type="text"
+          name="name"
+          id="name"
+          placeholder="Digite o nome"
+        />
+      </div>
+
+      <div class="container-errors flex-row">
+        <div class="error" *ngIf="form.get('name')?.hasError('minlength')">
+          <i class="fa-solid fa-circle-exclamation"></i>
+          No mínimo 2 caracteres
+        </div>
+
+        <div
+          class="error"
+          *ngIf="
+            form.get('name')?.hasError('required') && form.get('name')?.touched
+          "
+        >
+          <i class="fa-solid fa-circle-exclamation"></i>
+          O nome é obrigatório
+        </div>
+
+        <div class="error" *ngIf="form.get('name')?.hasError('pattern')">
+          <i class="fa-solid fa-circle-exclamation"></i>
+          Apenas letras e números
+        </div>
+      </div>
     </div>
 
-    <div class="form-group">
-      <label for="stock-quantity">Quantidade em estoque</label>
-      <input
-        formControlName="stockQuantity"
-        type="number"
-        name="stock-quantity"
-        id="stock-quantity"
-        placeholder="Digite a quantidade"
-      />
+    <div class="flex-column">
+      <div class="form-group">
+        <label for="stock-quantity">Quantidade em estoque</label>
+        <input
+          formControlName="stockQuantity"
+          type="number"
+          name="stock-quantity"
+          id="stock-quantity"
+          placeholder="Digite a quantidade"
+        />
+      </div>
+      <div class="container-errors flex-row">
+        <div
+          class="error"
+          *ngIf="
+            form.get('stockQuantity')?.hasError('required') &&
+            form.get('stockQuantity')?.touched
+          "
+        >
+          <i class="fa-solid fa-circle-exclamation"></i>
+          A quantidade é obrigatória
+        </div>
+        <div class="error" *ngIf="form.get('stockQuantity')?.hasError('min')">
+          <i class="fa-solid fa-circle-exclamation"></i>
+          No mínimo 1
+        </div>
+      </div>
     </div>
 
-    <div class="form-group">
-      <label for="minStockQuantity">Quantidade mínima em estoque</label>
-      <input
-        formControlName="minStockQuantity"
-        type="number"
-        name="minStockQuantity"
-        id="minStockQuantity"
-        placeholder="Digite a quantidade"
-      />
+    <div class="flex-column">
+      <div class="form-group">
+        <label for="minStockQuantity">Quantidade mínima em estoque</label>
+        <input
+          formControlName="minStockQuantity"
+          type="number"
+          name="minStockQuantity"
+          id="minStockQuantity"
+          placeholder="Digite a quantidade"
+        />
+      </div>
+      <div class="container-errors flex-row">
+        <div
+          class="error"
+          *ngIf="
+            form.get('minStockQuantity')?.hasError('required') &&
+            form.get('minStockQuantity')?.touched
+          "
+        >
+          <i class="fa-solid fa-circle-exclamation"></i>
+          A quantidade é obrigatória
+        </div>
+        <div
+          class="error"
+          *ngIf="form.get('minStockQuantity')?.hasError('min')"
+        >
+          <i class="fa-solid fa-circle-exclamation"></i>
+          No mínimo 1
+        </div>
+      </div>
     </div>
 
-    <div class="form-group">
-      <label for="supplier">Fornecedor</label>
-      <input
-        formControlName="supplier"
-        type="text"
-        name="supplier"
-        id="supplier"
-        placeholder="Digite o nome do fornecedor"
-      />
+    <div class="flex-column">
+      <div class="form-group">
+        <label for="supplier">Fornecedor</label>
+        <input
+          formControlName="supplier"
+          type="text"
+          name="supplier"
+          id="supplier"
+          placeholder="Digite o nome do fornecedor"
+        />
+      </div>
+      <div class="container-errors flex-row">
+        <div
+          class="error"
+          *ngIf="
+            form.get('supplier')?.hasError('required') &&
+            form.get('supplier')?.touched
+          "
+        >
+          <i class="fa-solid fa-circle-exclamation"></i>
+          O nome é obrigatório
+        </div>
+
+        <div class="error" *ngIf="form.get('supplier')?.hasError('minlength')">
+          <i class="fa-solid fa-circle-exclamation"></i>
+          No mínimo 2 caracteres
+        </div>
+
+        <div class="error" *ngIf="form.get('supplier')?.hasError('pattern')">
+          <i class="fa-solid fa-circle-exclamation"></i>
+          Apenas letras
+        </div>
+      </div>
     </div>
 
-    <div class="form-group">
-      <label for="price">Preço</label>
-      <input
-        formControlName="price"
-        type="number"
-        name="price"
-        id="price"
-        placeholder="Digite o preço"
-      />
+    <div class="flex-column">
+      <div class="form-group">
+        <label for="price">Preço</label>
+        <input
+          formControlName="price"
+          type="number"
+          name="price"
+          id="price"
+          placeholder="Digite o preço"
+        />
+      </div>
+      <div class="container-errors flex-row">
+        <div
+          class="error"
+          *ngIf="
+            form.get('price')?.hasError('required') &&
+            form.get('price')?.touched
+          "
+        >
+          <i class="fa-solid fa-circle-exclamation"></i>
+          O preço é obrigatóro
+        </div>
+        <div class="error" *ngIf="form.get('price')?.hasError('min')">
+          <i class="fa-solid fa-circle-exclamation"></i>
+          No mínimo 1
+        </div>
+      </div>
     </div>
   </fieldset>
 
