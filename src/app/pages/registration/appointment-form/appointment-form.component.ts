@@ -7,11 +7,17 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-appointment-form',
   standalone: true,
-  imports: [ClearButtonComponent, RegisterButtonComponent, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    ClearButtonComponent,
+    RegisterButtonComponent,
+    ReactiveFormsModule,
+  ],
   templateUrl: './appointment-form.component.html',
   styleUrl: './appointment-form.component.css',
 })
@@ -38,5 +44,10 @@ export class AppointmentFormComponent implements OnInit {
     });
   }
 
-  onSubmit() {}
+  onSubmit() {
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      return;
+    }
+  }
 }
