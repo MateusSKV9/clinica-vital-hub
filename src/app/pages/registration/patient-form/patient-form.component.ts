@@ -9,9 +9,10 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { PatientService } from '../../../services/patient.service';
-import { Patient } from '../../../interfaces/patient.interface';
+
 import { CommonModule } from '@angular/common';
 import { NgxMaskDirective } from 'ngx-mask';
+import { Patient } from '../../../interfaces/Patient.interface';
 
 @Component({
   selector: 'app-patient-form',

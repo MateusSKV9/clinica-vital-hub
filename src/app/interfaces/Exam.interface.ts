@@ -1,5 +1,5 @@
 import { Material } from './Material.interface';
-import { Patient } from './patient.interface';
+import { Patient } from './Patient.interface';
 
 export interface Exam {
   id: number;
