@@ -7,11 +7,17 @@ import {
   Validators,
   ReactiveFormsModule,
 } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-exam-form',
   standalone: true,
-  imports: [ClearButtonComponent, RegisterButtonComponent, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    ClearButtonComponent,
+    RegisterButtonComponent,
+    ReactiveFormsModule,
+  ],
   templateUrl: './exam-form.component.html',
   styleUrl: './exam-form.component.css',
 })
@@ -27,7 +33,14 @@ export class ExamFormComponent implements OnInit {
   initializeForm(): void {
     this.form = this.fb.group({
       patient: ['', [Validators.required]],
-      examName: ['', [Validators.required]],
+      examName: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(2),
+          Validators.pattern(/^[a-zA-Z\s]+$/),
+        ],
+      ],
       examType: ['', [Validators.required]],
       value: ['', [Validators.required]],
       description: ['', [Validators.required]],
@@ -35,5 +48,10 @@ export class ExamFormComponent implements OnInit {
     });
   }
 
-  onSubmit() {}
+  onSubmit() {
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      return;
+    }
+  }
 }
