@@ -1,83 +1,297 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <fieldset>
+<form [formGroup]="formAddress" autocomplete="off">
+  <fieldset [formGroup]="formAddress">
     <legend>Endereço</legend>
 
     <div class="container-form-group">
-      <div class="form-group">
-        <label for="street">Logradouro</label>
-        <input
-          formControlName="street"
-          type="text"
-          name="street"
-          id="street"
-          placeholder="Digite o logradouro"
-        />
+      <div class="flex-column">
+        <div class="form-group">
+          <label for="street">Logradouro</label>
+          <input
+            formControlName="street"
+            type="text"
+            name="street"
+            id="street"
+            placeholder="Digite o logradouro"
+          />
+        </div>
+        <div class="container-errors">
+          <div
+            class="error"
+            *ngIf="
+              formAddress.get('street')?.hasError('required') &&
+              formAddress.get('street')?.touched
+            "
+          >
+            <i class="fa-solid fa-circle-exclamation"></i>
+            Obrigatório
+          </div>
+
+          <div
+            class="error"
+            *ngIf="formAddress.get('street')?.hasError('minlength')"
+          >
+            <i class="fa-solid fa-circle-exclamation"></i>
+            No mínimo 2 caracteres
+          </div>
+
+          <div
+            class="error"
+            *ngIf="formAddress.get('street')?.hasError('pattern')"
+          >
+            <i class="fa-solid fa-circle-exclamation"></i>
+            Apenas letras e números
+          </div>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="number">Número</label>
-        <input
-          formControlName="number"
-          type="text"
-          name="number"
-          id="number"
-          placeholder="Nº"
-        />
+
+      <div class="flex-column">
+        <div class="form-group">
+          <label for="number">Número</label>
+          <input
+            formControlName="number"
+            type="text"
+            name="number"
+            id="number"
+            placeholder="Nº"
+          />
+        </div>
+        <div class="container-errors">
+          <div
+            class="error"
+            *ngIf="
+              formAddress.get('number')?.hasError('required') &&
+              formAddress.get('number')?.touched
+            "
+          >
+            <i class="fa-solid fa-circle-exclamation"></i>
+            Oobrigatório
+          </div>
+
+          <div
+            class="error"
+            *ngIf="formAddress.get('number')?.hasError('minlength')"
+          >
+            <i class="fa-solid fa-circle-exclamation"></i>
+            No mínimo 2 caracteres
+          </div>
+
+          <div
+            class="error"
+            *ngIf="formAddress.get('number')?.hasError('pattern')"
+          >
+            <i class="fa-solid fa-circle-exclamation"></i>
+            Apenas letras e números
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="container-form-group">
-      <div class="form-group">
-        <label for="neighborhood">Bairro</label>
-        <input
-          formControlName="neighborhood"
-          type="text"
-          name="neighborhood"
-          id="neighborhood"
-          placeholder="Digite o bairro"
-        />
+      <div class="flex-column">
+        <div class="form-group">
+          <label for="neighborhood">Bairro</label>
+          <input
+            formControlName="neighborhood"
+            type="text"
+            name="neighborhood"
+            id="neighborhood"
+            placeholder="Digite o bairro"
+          />
+        </div>
+        <div class="container-errors">
+          <div
+            class="error"
+            *ngIf="
+              formAddress.get('neighborhood')?.hasError('required') &&
+              formAddress.get('neighborhood')?.touched
+            "
+          >
+            <i class="fa-solid fa-circle-exclamation"></i>
+            Obrigatório
+          </div>
+
+          <div
+            class="error"
+            *ngIf="formAddress.get('neighborhood')?.hasError('minlength')"
+          >
+            <i class="fa-solid fa-circle-exclamation"></i>
+            No mínimo 2 caracteres
+          </div>
+
+          <div
+            class="error"
+            *ngIf="formAddress.get('neighborhood')?.hasError('pattern')"
+          >
+            <i class="fa-solid fa-circle-exclamation"></i>
+            Apenas letras e números
+          </div>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="complement">Complemento</label>
-        <input
-          formControlName="complement"
-          type="text"
-          name="complement"
-          id="complement"
-          placeholder="Opcional"
-        />
+
+      <div class="flex-column">
+        <div class="form-group">
+          <label for="complement">Complemento</label>
+          <input
+            formControlName="complement"
+            type="text"
+            name="complement"
+            id="complement"
+            placeholder="Opcional"
+          />
+        </div>
+        <div class="container-errors">
+          <div
+            class="error"
+            *ngIf="
+              formAddress.get('complement')?.hasError('required') &&
+              formAddress.get('complement')?.touched
+            "
+          >
+            <i class="fa-solid fa-circle-exclamation"></i>
+            Obrigatório
+          </div>
+
+          <div
+            class="error"
+            *ngIf="formAddress.get('complement')?.hasError('minlength')"
+          >
+            <i class="fa-solid fa-circle-exclamation"></i>
+            No mínimo 2 caracteres
+          </div>
+
+          <div
+            class="error"
+            *ngIf="formAddress.get('complement')?.hasError('pattern')"
+          >
+            <i class="fa-solid fa-circle-exclamation"></i>
+            Apenas letras e números
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="container-form-group">
-      <div class="form-group">
-        <label for="city">Cidade</label>
-        <input
-          formControlName="city"
-          type="text"
-          name="city"
-          id="city"
-          placeholder="Digite a cidade"
-        />
+      <div class="flex-column">
+        <div class="form-group">
+          <label for="city">Cidade</label>
+          <input
+            formControlName="city"
+            type="text"
+            name="city"
+            id="city"
+            placeholder="Digite a cidade"
+          />
+        </div>
+        <div class="container-errors">
+          <div
+            class="error"
+            *ngIf="
+              formAddress.get('city')?.hasError('required') &&
+              formAddress.get('city')?.touched
+            "
+          >
+            <i class="fa-solid fa-circle-exclamation"></i>
+            Obrigatório
+          </div>
+
+          <div
+            class="error"
+            *ngIf="formAddress.get('city')?.hasError('minlength')"
+          >
+            <i class="fa-solid fa-circle-exclamation"></i>
+            No mínimo 2 caracteres
+          </div>
+
+          <div
+            class="error"
+            *ngIf="formAddress.get('city')?.hasError('pattern')"
+          >
+            <i class="fa-solid fa-circle-exclamation"></i>
+            Apenas letras e números
+          </div>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="zid-code">CEP</label>
-        <input
-          formControlName="zidCode"
-          type="number"
-          name="zid-code"
-          id="zid-code"
-          placeholder="Digite o CEP"
-        />
+
+      <div class="flex-column">
+        <div class="form-group">
+          <label for="zid-code">CEP</label>
+          <input
+            formControlName="zipCode"
+            type="text"
+            name="zid-code"
+            id="zid-code"
+            placeholder="Digite o CEP"
+          />
+        </div>
+        <div class="container-errors">
+          <div
+            class="error"
+            *ngIf="
+              formAddress.get('zipCode')?.hasError('required') &&
+              formAddress.get('zipCode')?.touched
+            "
+          >
+            <i class="fa-solid fa-circle-exclamation"></i>
+            Obrigatório
+          </div>
+
+          <div
+            class="error"
+            *ngIf="formAddress.get('zipCode')?.hasError('minlength')"
+          >
+            <i class="fa-solid fa-circle-exclamation"></i>
+            No mínimo 2 caracteres
+          </div>
+
+          <div
+            class="error"
+            *ngIf="formAddress.get('zipCode')?.hasError('pattern')"
+          >
+            <i class="fa-solid fa-circle-exclamation"></i>
+            Apenas letras e números
+          </div>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="state">Estado</label>
-        <input
-          formControlName="state"
-          type="text"
-          name="state"
-          id="state"
-          placeholder="Digite o Estado"
-        />
+
+      <div class="flex-column">
+        <div class="form-group">
+          <label for="state">Estado</label>
+          <input
+            formControlName="state"
+            type="text"
+            name="state"
+            id="state"
+            placeholder="Digite o Estado"
+          />
+        </div>
+        <div class="container-errors">
+          <div
+            class="error"
+            *ngIf="
+              formAddress.get('state')?.hasError('required') &&
+              formAddress.get('state')?.touched
+            "
+          >
+            <i class="fa-solid fa-circle-exclamation"></i>
+            Obrigatório
+          </div>
+
+          <div
+            class="error"
+            *ngIf="formAddress.get('state')?.hasError('minlength')"
+          >
+            <i class="fa-solid fa-circle-exclamation"></i>
+            No mínimo 2 caracteres
+          </div>
+
+          <div
+            class="error"
+            *ngIf="formAddress.get('state')?.hasError('pattern')"
+          >
+            <i class="fa-solid fa-circle-exclamation"></i>
+            Apenas letras e números
+          </div>
+        </div>
       </div>
     </div>
   </fieldset>
