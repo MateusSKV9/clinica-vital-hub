@@ -8,78 +8,203 @@
     <legend>Dados pessoais</legend>
 
     <div class="flex-row">
-      <div class="form-group">
-        <label for="name">Nome</label>
-        <input
-          formControlName="name"
-          type="text"
-          name="name"
-          id="name"
-          placeholder="Digite o nome"
-        />
+      <div class="flex-column">
+        <div class="form-group">
+          <label for="name">Nome</label>
+          <input
+            formControlName="name"
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Digite o nome"
+          />
+        </div>
+        <div class="container-errors">
+          <div
+            class="error"
+            *ngIf="
+              form.get('name')?.hasError('required') &&
+              form.get('name')?.touched
+            "
+          >
+            <i class="fa-solid fa-circle-exclamation"></i>
+            Obrigatório
+          </div>
+
+          <div class="error" *ngIf="form.get('name')?.hasError('minlength')">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            No mínimo 2 caracteres
+          </div>
+
+          <div class="error" *ngIf="form.get('name')?.hasError('pattern')">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            Apenas letras e números
+          </div>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="dateOfBirth">Data de Nascimento</label>
-        <input
-          formControlName="dateOfBirth"
-          type="date"
-          name="dateOfBirth"
-          id="dateOfBirth"
-        />
+
+      <div class="flex-column">
+        <div class="form-group">
+          <label for="dateOfBirth">Data de Nascimento</label>
+          <input
+            formControlName="dateOfBirth"
+            type="date"
+            name="dateOfBirth"
+            id="dateOfBirth"
+          />
+        </div>
+        <div class="container-errors">
+          <div
+            class="error"
+            *ngIf="
+              form.get('dateOfBirth')?.hasError('required') &&
+              form.get('dateOfBirth')?.touched
+            "
+          >
+            <i class="fa-solid fa-circle-exclamation"></i>
+            Obrigatória
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="flex-row">
-      <div class="form-group">
-        <label for="bloodType">Tipo sanguíneo</label>
-        <select formControlName="bloodType" name="bloodType" id="bloodType">
-          <option disabled selected value="">Selecione um tipo</option>
-        </select>
+      <div class="flex-column">
+        <div class="form-group">
+          <label for="bloodType">Tipo sanguíneo</label>
+          <select formControlName="bloodType" name="bloodType" id="bloodType">
+            <option disabled selected value="">Selecione um tipo</option>
+            <option value="a">Tipo A</option>
+            <option value="b">Tipo B</option>
+            <option value="ab">Tipo AB</option>
+            <option value="o">Tipo O</option>
+          </select>
+        </div>
+        <div class="container-errors">
+          <div
+            class="error"
+            *ngIf="
+              form.get('bloodType')?.hasError('required') &&
+              form.get('bloodType')?.touched
+            "
+          >
+            <i class="fa-solid fa-circle-exclamation"></i>
+            Obrigatório
+          </div>
+        </div>
       </div>
 
-      <div class="form-group">
-        <label for="phone">Telefone</label>
-        <input
-          formControlName="phone"
-          type="number"
-          name="phone"
-          id="phone"
-          placeholder="(xx) x xxxx-xxxx"
-        />
+      <div class="flex-column">
+        <div class="form-group">
+          <label for="phone">Telefone</label>
+          <input
+            formControlName="phone"
+            type="text"
+            name="phone"
+            id="phone"
+            placeholder="(xx) x xxxx-xxxx"
+          />
+        </div>
+        <div class="container-errors">
+          <div
+            class="error"
+            *ngIf="
+              form.get('phone')?.hasError('required') &&
+              form.get('phone')?.touched
+            "
+          >
+            <i class="fa-solid fa-circle-exclamation"></i>
+            Obrigatório
+          </div>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="healthInsurance">Convênio</label>
-        <select
-          formControlName="healthInsurance"
-          name="healthInsurance"
-          id="healthInsurance"
-        >
-          <option disabled selected value="">Selecione um tipo</option>
-        </select>
+
+      <div class="flex-column">
+        <div class="form-group">
+          <label for="healthInsurance">Convênio</label>
+          <select
+            formControlName="healthInsurance"
+            name="healthInsurance"
+            id="healthInsurance"
+          >
+            <option disabled selected value="">Selecione um tipo</option>
+            <option value="ouro">Ouro</option>
+          </select>
+        </div>
+        <div class="container-errors">
+          <div
+            class="error"
+            *ngIf="
+              form.get('bloodType')?.hasError('required') &&
+              form.get('bloodType')?.touched
+            "
+          >
+            <i class="fa-solid fa-circle-exclamation"></i>
+            Obrigatório
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="flex-row">
-      <div class="form-group">
-        <label for="height">Altura</label>
-        <input
-          formControlName="height"
-          type="number"
-          name="height"
-          id="height"
-          placeholder="Em metros"
-        />
+      <div class="flex-column">
+        <div class="form-group">
+          <label for="height">Altura</label>
+          <input
+            formControlName="height"
+            type="text"
+            name="height"
+            id="height"
+            placeholder="Em metros"
+          />
+        </div>
+        <div class="container-errors">
+          <div
+            class="error"
+            *ngIf="
+              form.get('height')?.hasError('required') &&
+              form.get('height')?.touched
+            "
+          >
+            <i class="fa-solid fa-circle-exclamation"></i>
+            Obrigatório
+          </div>
+
+          <div class="error" *ngIf="form.get('height')?.hasError('min')">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            No mínimo 1
+          </div>
+        </div>
       </div>
 
-      <div class="form-group">
-        <label for="weight">Peso</label>
-        <input
-          formControlName="weight"
-          type="number"
-          name="weight"
-          id="weight"
-          placeholder="Em Kg"
-        />
+      <div class="flex-column">
+        <div class="form-group">
+          <label for="weight">Peso</label>
+          <input
+            formControlName="weight"
+            type="text"
+            name="weight"
+            id="weight"
+            placeholder="Em Kg"
+          />
+        </div>
+        <div class="container-errors">
+          <div
+            class="error"
+            *ngIf="
+              form.get('weight')?.hasError('required') &&
+              form.get('weight')?.touched
+            "
+          >
+            <i class="fa-solid fa-circle-exclamation"></i>
+            Obrigatório
+          </div>
+
+          <div class="error" *ngIf="form.get('weight')?.hasError('min')">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            No mínimo 1
+          </div>
+        </div>
       </div>
     </div>
 
@@ -96,7 +221,7 @@
     </div>
   </fieldset>
 
-  <app-address-form></app-address-form>
+  <app-address-form [formAddress]="formAddress"></app-address-form>
 
   <div class="container-form-buttons">
     <app-clear-button></app-clear-button>
