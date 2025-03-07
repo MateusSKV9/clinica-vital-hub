@@ -9,7 +9,7 @@ import {
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Material } from '../../../interfaces/Material.interface';
-import { MaterialService } from '../../../services/material.service';
+import { MaterialService } from '../../../services/material/material.service';
 
 @Component({
   selector: 'app-material-form',

@@ -8,10 +8,10 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { DoctorService } from '../../../services/doctor.service';
 import { Doctor } from '../../../interfaces/Doctor.interface';
 import { NgxMaskDirective } from 'ngx-mask';
 import { CommonModule } from '@angular/common';
+import { DoctorService } from '../../../services/doctor/doctor.service';
 
 @Component({
   selector: 'app-doctor-form',

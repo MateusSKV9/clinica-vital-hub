@@ -8,7 +8,7 @@ import {
   Validators,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { PatientService } from '../../../services/patient.service';
+import { PatientService } from '../../../services/patient/patient.service';
 
 import { CommonModule } from '@angular/common';
 import { NgxMaskDirective } from 'ngx-mask';
