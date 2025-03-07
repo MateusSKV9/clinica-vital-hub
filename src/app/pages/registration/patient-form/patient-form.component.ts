@@ -11,6 +11,7 @@ import {
 import { PatientService } from '../../../services/patient.service';
 import { Patient } from '../../../interfaces/patient.interface';
 import { CommonModule } from '@angular/common';
+import { NgxMaskDirective } from 'ngx-mask';
 
 @Component({
   selector: 'app-patient-form',
@@ -21,6 +22,7 @@ import { CommonModule } from '@angular/common';
     RegisterButtonComponent,
     ClearButtonComponent,
     ReactiveFormsModule,
+    NgxMaskDirective,
   ],
   templateUrl: './patient-form.component.html',
   styleUrl: './patient-form.component.css',

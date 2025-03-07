@@ -19,12 +19,7 @@
         />
       </div>
 
-      <div class="container-errors flex-row">
-        <div class="error" *ngIf="form.get('name')?.hasError('minlength')">
-          <i class="fa-solid fa-circle-exclamation"></i>
-          No mínimo 2 caracteres
-        </div>
-
+      <div class="container-errors">
         <div
           class="error"
           *ngIf="
@@ -33,6 +28,11 @@
         >
           <i class="fa-solid fa-circle-exclamation"></i>
           O nome é obrigatório
+        </div>
+
+        <div class="error" *ngIf="form.get('name')?.hasError('minlength')">
+          <i class="fa-solid fa-circle-exclamation"></i>
+          No mínimo 2 caracteres
         </div>
 
         <div class="error" *ngIf="form.get('name')?.hasError('pattern')">

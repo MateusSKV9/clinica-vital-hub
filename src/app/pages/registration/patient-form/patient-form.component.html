@@ -98,6 +98,7 @@
         <div class="form-group">
           <label for="phone">Telefone</label>
           <input
+            mask="(00) 00000-0000"
             formControlName="phone"
             type="text"
             name="phone"
@@ -151,6 +152,8 @@
         <div class="form-group">
           <label for="height">Altura</label>
           <input
+            mask="0.00"
+            suffix="m"
             formControlName="height"
             type="text"
             name="height"
@@ -181,6 +184,8 @@
         <div class="form-group">
           <label for="weight">Peso</label>
           <input
+            mask="000.00"
+            suffix="kg"
             formControlName="weight"
             type="text"
             name="weight"

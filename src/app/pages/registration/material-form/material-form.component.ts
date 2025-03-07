@@ -68,6 +68,6 @@ export class MaterialFormComponent implements OnInit {
     const material = this.form.value as Material;
     this.materialService
       .create(material)
-      .subscribe(() => console.log('Criado com sucesso!'));
+      .subscribe(() => console.log('Material cadastrado!'));
   }
 }

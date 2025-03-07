@@ -10,12 +10,15 @@ import {
 } from '@angular/forms';
 import { DoctorService } from '../../../services/doctor.service';
 import { Doctor } from '../../../interfaces/Doctor.interface';
+import { NgxMaskDirective } from 'ngx-mask';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-doctor-form',
   standalone: true,
   imports: [
     CommonModule,
+    NgxMaskDirective,
     AddressFormComponent,
     ClearButtonComponent,
     RegisterButtonComponent,
