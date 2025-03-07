@@ -8,11 +8,14 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { DoctorService } from '../../../services/doctor.service';
+import { Doctor } from '../../../interfaces/Doctor.interface';
 
 @Component({
   selector: 'app-doctor-form',
   standalone: true,
   imports: [
+    CommonModule,
     AddressFormComponent,
     ClearButtonComponent,
     RegisterButtonComponent,
@@ -28,18 +31,56 @@ export class DoctorFormComponent implements OnInit {
     this.initializeForm();
   }
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private doctorService: DoctorService) {}
 
   initializeForm(): void {
     this.form = this.fb.group({
-      name: ['', [Validators.required]],
-      specialty: ['', [Validators.required]],
+      name: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(2),
+          Validators.pattern(/^[a-zA-Z\s]+$/),
+        ],
+      ],
+      specialty: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(2),
+          Validators.pattern(/^[a-zA-Z\s]+$/),
+        ],
+      ],
       crm: ['', [Validators.required]],
       consultationHours: ['', [Validators.required]],
-      valueAppointment: ['', [Validators.required]],
+      valueAppointment: ['', [Validators.required, Validators.min(1)]],
       contat: ['', [Validators.required]],
+
+      formAddress: this.fb.group({
+        street: ['', Validators.required],
+        number: ['', Validators.required],
+        neighborhood: ['', Validators.required],
+        complement: [''],
+        city: ['', Validators.required],
+        zipCode: ['', Validators.required],
+        state: ['', Validators.required],
+      }),
     });
   }
 
-  onSubmit() {}
+  onSubmit() {
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      return;
+    }
+
+    const patient = this.form.value as Doctor;
+    this.doctorService
+      .create(patient)
+      .subscribe(() => console.log('Médico cadastrado!'));
+  }
+
+  get formAddress(): FormGroup {
+    return this.form.get('formAddress') as FormGroup;
+  }
 }
