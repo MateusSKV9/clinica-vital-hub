@@ -1,0 +1,12 @@
+.form-group {
+  width: 100%;
+}
+
+.flex-column {
+  align-items: flex-start;
+  gap: 0;
+}
+
+.flex-row {
+  align-items: flex-start;
+}
