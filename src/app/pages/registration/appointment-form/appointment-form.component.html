@@ -13,6 +13,9 @@
           <label for="doctor">Médico</label>
           <select formControlName="doctor" name="doctor" id="doctor">
             <option disabled selected value="">Selecionar médico</option>
+            @for (doctor of doctors; track doctor.id) {
+            <option value="{{ doctor.name }}">{{ doctor.name }}</option>
+            }
           </select>
         </div>
         <div class="container-errors">
@@ -33,7 +36,10 @@
         <div class="form-group">
           <label for="patient">Selecionar paciente</label>
           <select formControlName="patient" name="patient" id="patient">
-            <option disabled selected value="">Selecionar médico</option>
+            <option disabled selected value="">Selecionar paciente</option>
+            @for (patient of patients; track patient.id) {
+            <option value="{{ patient.name }}">{{ patient.name }}</option>
+            }
           </select>
         </div>
         <div class="container-errors">
@@ -61,6 +67,7 @@
             id="appointment-type"
           >
             <option disabled selected value="">Selecione um tipo</option>
+            <option value="simples">Simples</option>
           </select>
         </div>
         <div class="container-errors">
@@ -111,6 +118,7 @@
             id="health-insurance"
           >
             <option disabled selected value="">Selecione um plano</option>
+            <option value="ouro">Ouro</option>
           </select>
         </div>
         <div class="container-errors">
@@ -152,7 +160,7 @@
         <div class="flex-column">
           <div class="form-group">
             <label for="hour">Horário</label>
-            <input formControlName="hour" type="date" name="hour" id="hour" />
+            <input formControlName="hour" type="time" name="hour" id="hour" />
           </div>
           <div class="container-errors">
             <div
@@ -174,6 +182,9 @@
           <label for="materials">Materiais utilizados</label>
           <select formControlName="materials" name="materials" id="materials">
             <option disabled selected value="">Selecione um tipo</option>
+            @for (material of materials; track material.id) {
+            <option value="{{ material.name }}">{{ material.name }}</option>
+            }
           </select>
         </div>
         <div class="container-errors">

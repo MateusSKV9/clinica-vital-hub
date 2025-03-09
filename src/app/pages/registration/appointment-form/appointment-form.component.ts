@@ -8,6 +8,14 @@ import {
   Validators,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { AppointmentService } from '../../../services/appointment/appointment.service';
+import { Appointment } from '../../../interfaces/Appointment.interface';
+import { Patient } from '../../../interfaces/Patient.interface';
+import { Doctor } from '../../../interfaces/Doctor.interface';
+import { PatientService } from '../../../services/patient/patient.service';
+import { DoctorService } from '../../../services/doctor/doctor.service';
+import { Material } from '../../../interfaces/Material.interface';
+import { MaterialService } from '../../../services/material/material.service';
 
 @Component({
   selector: 'app-appointment-form',
@@ -23,12 +31,24 @@ import { CommonModule } from '@angular/common';
 })
 export class AppointmentFormComponent implements OnInit {
   form!: FormGroup;
+  patients: Patient[] = [];
+  doctors: Doctor[] = [];
+  materials: Material[] = [];
 
   ngOnInit(): void {
     this.initializeForm();
+    this.getAllDoctors();
+    this.getAllPatients();
+    this.getAllMaterials();
   }
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private appointmentService: AppointmentService,
+    private patientService: PatientService,
+    private doctorService: DoctorService,
+    private materialService: MaterialService
+  ) {}
 
   initializeForm(): void {
     this.form = this.fb.group({
@@ -40,14 +60,39 @@ export class AppointmentFormComponent implements OnInit {
       date: ['', [Validators.required]],
       hour: ['', [Validators.required]],
       materials: ['', [Validators.required]],
-      observations: ['', [Validators.required]],
+      observations: [''],
     });
   }
 
   onSubmit() {
+    console.log('entrou');
     if (this.form.invalid) {
       this.form.markAllAsTouched();
+      console.log('deu erro');
       return;
     }
+
+    const appointment = this.form.value as Appointment;
+    this.appointmentService
+      .create(appointment)
+      .subscribe(() => console.log('Consulta cadastrada!', appointment));
+  }
+
+  getAllPatients(): void {
+    this.patientService
+      .getAll()
+      .subscribe((patients) => (this.patients = patients));
+  }
+
+  getAllDoctors(): void {
+    this.doctorService
+      .getAll()
+      .subscribe((doctors) => (this.doctors = doctors));
+  }
+
+  getAllMaterials(): void {
+    this.materialService
+      .getAll()
+      .subscribe((materials) => (this.materials = materials));
   }
 }
