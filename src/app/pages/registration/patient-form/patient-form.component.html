@@ -136,8 +136,8 @@
           <div
             class="error"
             *ngIf="
-              form.get('bloodType')?.hasError('required') &&
-              form.get('bloodType')?.touched
+              form.get('healthInsurance')?.hasError('required') &&
+              form.get('healthInsurance')?.touched
             "
           >
             <i class="fa-solid fa-circle-exclamation"></i>
@@ -152,7 +152,9 @@
         <div class="form-group">
           <label for="height">Altura</label>
           <input
-            mask="0.00"
+            mask="separator.2"
+            thousandSeparator="."
+            decimalMarker=","
             suffix="m"
             formControlName="height"
             type="text"
@@ -184,7 +186,10 @@
         <div class="form-group">
           <label for="weight">Peso</label>
           <input
-            mask="000.00"
+            mask="separator.2"
+            suffix=" kg"
+            thousandSeparator="."
+            decimalMarker=","
             suffix="kg"
             formControlName="weight"
             type="text"

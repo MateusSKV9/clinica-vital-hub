@@ -79,7 +79,7 @@ export class PatientFormComponent implements OnInit {
     const patient = this.form.value as Patient;
     this.patientService
       .create(patient)
-      .subscribe(() => console.log('Paciente cadastrado!'));
+      .subscribe(() => console.log('Paciente cadastrado!', patient));
   }
 
   get formAddress(): FormGroup {
