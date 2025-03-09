@@ -77,10 +77,10 @@ export class DoctorFormComponent implements OnInit {
       return;
     }
 
-    const patient = this.form.value as Doctor;
+    const doctor = this.form.value as Doctor;
     this.doctorService
-      .create(patient)
-      .subscribe(() => console.log('Médico cadastrado!'));
+      .create(doctor)
+      .subscribe(() => console.log('Médico cadastrado!', doctor));
   }
 
   get formAddress(): FormGroup {
