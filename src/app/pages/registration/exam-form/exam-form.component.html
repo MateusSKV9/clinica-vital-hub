@@ -13,6 +13,9 @@
           <label for="patient">Paciente</label>
           <select formControlName="patient" name="patient" id="patient">
             <option disabled selected value="">Selecione um paciente</option>
+            @for (patient of patients; track patient.id) {
+            <option value="{{ patient.id }}">{{ patient.name }}</option>
+            }
           </select>
         </div>
         <div class="container-errors">
@@ -74,6 +77,7 @@
           <label for="exam-type">Tipo de exame</label>
           <select formControlName="examType" name="exam-type" id="exam-type">
             <option disabled selected value="">Selecione um tipo</option>
+            <option value="laboratorial">Laboratorial</option>
           </select>
         </div>
         <div class="container-errors">
@@ -137,6 +141,9 @@
           <label for="materials">Materiais utilizados</label>
           <select formControlName="materials" name="materials" id="materials">
             <option disabled selected value="">Selecione um tipo</option>
+            @for (material of materials; track material.id) {
+            <option value="{{ material.id }}">{{ material.name }}</option>
+            }
           </select>
         </div>
         <div class="container-errors">

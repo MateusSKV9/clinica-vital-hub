@@ -8,6 +8,12 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ExamService } from '../../../services/exam/exam.service';
+import { Exam } from '../../../interfaces/Exam.interface';
+import { Patient } from '../../../interfaces/Patient.interface';
+import { PatientService } from '../../../services/patient/patient.service';
+import { MaterialService } from '../../../services/material/material.service';
+import { Material } from '../../../interfaces/Material.interface';
 
 @Component({
   selector: 'app-exam-form',
@@ -23,12 +29,21 @@ import { CommonModule } from '@angular/common';
 })
 export class ExamFormComponent implements OnInit {
   form!: FormGroup;
+  patients: Patient[] = [];
+  materials: Material[] = [];
 
   ngOnInit(): void {
     this.initializeForm();
+    this.getAllPatients();
+    this.getAllMaterials();
   }
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private examService: ExamService,
+    private patientService: PatientService,
+    private materialService: MaterialService
+  ) {}
 
   initializeForm(): void {
     this.form = this.fb.group({
@@ -53,5 +68,22 @@ export class ExamFormComponent implements OnInit {
       this.form.markAllAsTouched();
       return;
     }
+
+    const exam = this.form.value as Exam;
+    this.examService
+      .create(exam)
+      .subscribe(() => console.log('Exame cadastrado', exam));
+  }
+
+  getAllPatients(): void {
+    this.patientService
+      .getAll()
+      .subscribe((patients) => (this.patients = patients));
+  }
+
+  getAllMaterials(): void {
+    this.materialService
+      .getAll()
+      .subscribe((materials) => (this.materials = materials));
   }
 }
