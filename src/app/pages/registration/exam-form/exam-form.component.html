@@ -98,8 +98,12 @@
         <div class="form-group">
           <label for="value">Valor particula</label>
           <input
+            mask="separator.2"
+            thousandSeparator="."
+            decimalMarker=","
+            prefix="$"
             formControlName="value"
-            type="number"
+            type="text"
             name="value"
             id="value"
             placeholder="Digite o valor"

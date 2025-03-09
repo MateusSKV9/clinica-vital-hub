@@ -14,12 +14,14 @@ import { Patient } from '../../../interfaces/Patient.interface';
 import { PatientService } from '../../../services/patient/patient.service';
 import { MaterialService } from '../../../services/material/material.service';
 import { Material } from '../../../interfaces/Material.interface';
+import { NgxMaskDirective } from 'ngx-mask';
 
 @Component({
   selector: 'app-exam-form',
   standalone: true,
   imports: [
     CommonModule,
+    NgxMaskDirective,
     ClearButtonComponent,
     RegisterButtonComponent,
     ReactiveFormsModule,
