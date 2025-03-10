@@ -13,6 +13,7 @@ import { PatientService } from '../../../services/patient/patient.service';
 import { CommonModule } from '@angular/common';
 import { NgxMaskDirective } from 'ngx-mask';
 import { Patient } from '../../../interfaces/Patient.interface';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-patient-form',
@@ -77,9 +78,9 @@ export class PatientFormComponent implements OnInit {
     }
 
     const patient = this.form.value as Patient;
-    this.patientService
-      .create(patient)
-      .subscribe(() => console.log('Paciente cadastrado!', patient));
+    this.patientService.create(patient).subscribe(() => {
+      // console.log('Paciente cadastrado!', patient);
+    });
   }
 
   get formAddress(): FormGroup {
