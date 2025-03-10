@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-button',
@@ -8,4 +8,18 @@ import { FormGroup } from '@angular/forms';
   templateUrl: './register-button.component.html',
   styleUrl: './register-button.component.css',
 })
-export class RegisterButtonComponent {}
+export class RegisterButtonComponent implements OnInit {
+  textButton: string = '';
+
+  constructor(private router: Router) {}
+
+  ngOnInit(): void {
+    const cadastro = this.router.url.includes('/cadastro/');
+
+    if (cadastro) {
+      this.textButton = 'Casdastrar';
+    } else {
+      this.textButton = 'Verificar';
+    }
+  }
+}
