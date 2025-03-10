@@ -151,3 +151,21 @@ textarea {
   padding: 4px 10px;
   border-radius: 0px 7px 7px 7px;
 }
+
+.custom-toast-success {
+  background-color: #4caf50 !important; /* Verde */
+  color: white !important;
+  font-weight: bold;
+  border-radius: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 15px;
+  width: max-content;
+}
+
+.custom-toast-success .toast-title {
+  font-size: 18px;
+}
+
+.custom-toast-success .toast-message {
+  font-size: 16px;
+}
