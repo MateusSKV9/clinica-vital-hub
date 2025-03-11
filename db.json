@@ -984,6 +984,14 @@
       "minStockQuantity": 1,
       "supplier": "aa",
       "price": 1
+    },
+    {
+      "id": "43e6",
+      "name": "Soro aditivado",
+      "stockQuantity": 1,
+      "minStockQuantity": 1,
+      "supplier": "aa",
+      "price": 1
     }
   ],
   "exams": [
