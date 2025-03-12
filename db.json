@@ -992,6 +992,30 @@
       "minStockQuantity": 1,
       "supplier": "aa",
       "price": 1
+    },
+    {
+      "id": "ffa3",
+      "name": "Soro aditivado",
+      "stockQuantity": 1,
+      "minStockQuantity": 1,
+      "supplier": "aa",
+      "price": 1
+    },
+    {
+      "id": "c24e",
+      "name": "Soro aditivado",
+      "stockQuantity": 1,
+      "minStockQuantity": 1,
+      "supplier": "aa",
+      "price": 1
+    },
+    {
+      "id": "0595",
+      "name": "Soro aditivado",
+      "stockQuantity": 1,
+      "minStockQuantity": 1,
+      "supplier": "aa",
+      "price": 1
     }
   ],
   "exams": [

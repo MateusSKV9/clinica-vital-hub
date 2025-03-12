@@ -11,17 +11,17 @@ import {
 import { provideNgxMask } from 'ngx-mask';
 import { provideToastr } from 'ngx-toastr';
 import { ToastInterceptor } from './interceptors/toastr.interceptor';
+import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
-    provideHttpClient(),
+    provideHttpClient(withInterceptorsFromDi()),
     provideAnimations(),
     provideNgxMask(),
-    provideAnimations(),
     provideToastr(),
-    provideHttpClient(withInterceptorsFromDi()),
     { provide: HTTP_INTERCEPTORS, useClass: ToastInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceptor, multi: true },
   ],
 };
