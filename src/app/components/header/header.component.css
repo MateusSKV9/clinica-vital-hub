@@ -80,7 +80,7 @@ ul li:not(:first-of-type):hover {
 }
 
 .dropdown:last-of-type .dropdown-content {
-  left: -20px;
+  left: -12px;
 }
 
 .dropdown-content a {
