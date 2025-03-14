@@ -3,28 +3,47 @@
   Relatório de Consulta
 </h1>
 
-<form>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
   <fieldset>
     <legend>Dados</legend>
 
     <div class="flex-row">
       <div class="form-group">
         <label for="period">Período</label>
-        <select name="period" id="period">
+        <select formControlName="period" name="period" id="period">
           <option disabled selected value="">Selecione um período</option>
+          <option value="mensal">Mensal</option>
+          <option value="trimestral">Trimestral</option>
+          <option value="semestral">Semestral</option>
+          <option value="anual">Anual</option>
         </select>
       </div>
 
       <div class="form-group">
         <label for="appointment-type">Tipo de consulta</label>
-        <select name="appointment-type" id="appointment-type">
+        <select
+          formControlName="appointmentType"
+          name="appointment-type"
+          id="appointment-type"
+        >
           <option disabled selected value="">Selecione um tipo</option>
+          <option disabled selected value="">Selecione um tipo</option>
+          <option value="equipamentos-medicos">Equipamentos médicos</option>
+          <option value="materiais-descartaveis">Materiais descartáveis</option>
+          <option value="medicamentos-farmaceuticos">
+            Medicamentos farmacêuticos
+          </option>
+          <option value="materiais-curativos">Materiais curativos</option>
+          <option value="instrumentos-cirúrgicos">
+            Instrumentos cirúrgicos
+          </option>
+          <option value="materiais-diagnostico-imagem">
+            Materiais de diagnóstico por imagem
+          </option>
+          <option value="materiais-higiene-limpeza">
+            Materiais de higiene e limpeza
+          </option>
         </select>
-      </div>
-
-      <div class="form-group">
-        <label for="date">Data</label>
-        <input type="date" name="date" id="date" />
       </div>
 
       <div class="form-group">
@@ -34,13 +53,6 @@
         </select>
       </div>
     </div>
-
-    <div class="flex-row">
-      <div class="form-group">
-        <label for="panel">Painel</label>
-        <textarea name="panel" id="panel" placeholder=""></textarea>
-      </div>
-    </div>
   </fieldset>
 
   <div class="container-form-buttons">
@@ -48,3 +60,37 @@
     <app-register-button></app-register-button>
   </div>
 </form>
+
+<div
+  class="flex-row panel"
+  *ngFor="let section of groupedAppointments | keyvalue"
+>
+  <div class="form-group">
+    <h3>Painel</h3>
+
+    <div class="output">
+      <h4>Período | {{ section.key }}</h4>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Data</th>
+            <th>Médico</th>
+            <th>Paciente mínima</th>
+            <th>Tipo de consulta</th>
+            <th>Convênio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let appointment of section.value">
+            <td>{{ appointment.date }}</td>
+            <td>{{ appointment.doctor }}</td>
+            <td>{{ appointment.patient }}</td>
+            <td>{{ appointment.appointmentType }}</td>
+            <td>{{ appointment.healthInsurance }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
