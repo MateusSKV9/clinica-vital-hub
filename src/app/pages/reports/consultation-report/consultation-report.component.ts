@@ -26,7 +26,8 @@ import { CommonModule } from '@angular/common';
 export class ConsultationReportComponent implements OnInit {
   form!: FormGroup;
   appointments: Appointment[] = [];
-  groupedAppointments: { [key: string]: Appointment[] } = {};
+
+  anosComConsultas: number[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -34,13 +35,25 @@ export class ConsultationReportComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.carregarConsultas();
+
     this.form = this.fb.group({
       period: ['', [Validators.required]],
-      appointmentType: ['', [Validators.required]],
+      appointmentType: [''],
+      year: ['', [Validators.required]],
     });
   }
 
+  get year(): string {
+    return this.form.get('year')?.value;
+  }
+
   onSubmit() {
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      return;
+    }
+
     switch (this.form.get('period')?.value) {
       case 'mensal':
         this.getMonthly();
@@ -58,53 +71,96 @@ export class ConsultationReportComponent implements OnInit {
   }
 
   getAnnual(): void {
+    const ano = Number(this.year);
+
     this.appointmentService.getAll().subscribe((appointments) => {
-      this.appointments = appointments;
+      this.appointments = appointments.filter((appointment) => {
+        const dateAppointment = new Date(appointment.date);
+        return dateAppointment.getUTCFullYear() === ano;
+      });
+
       this.groupByPeriod(12);
     });
   }
 
   getBiannual(): void {
+    const ano = Number(this.year);
+
     this.appointmentService.getAll().subscribe((appointments) => {
-      this.appointments = appointments;
+      this.appointments = appointments.filter((appointment) => {
+        const dateAppointment = new Date(appointment.date);
+        return dateAppointment.getUTCFullYear() === ano;
+      });
+
       this.groupByPeriod(6);
     });
-
-    console.log(this.groupedAppointments);
   }
 
   getQuarterly(): void {
+    const ano = Number(this.year);
+
     this.appointmentService.getAll().subscribe((appointments) => {
-      this.appointments = appointments;
+      this.appointments = appointments.filter((appointment) => {
+        const dateAppointment = new Date(appointment.date);
+        return dateAppointment.getUTCFullYear() === ano;
+      });
+
       this.groupByPeriod(3);
     });
   }
 
   getMonthly(): void {
+    const ano = Number(this.year);
+
     this.appointmentService.getAll().subscribe((appointments) => {
-      this.appointments = appointments;
+      this.appointments = appointments.filter((appointment) => {
+        const dateAppointment = new Date(appointment.date);
+        return dateAppointment.getUTCFullYear() === ano;
+      });
+
       this.groupByPeriod(1);
     });
   }
+  groupedAppointments: { [key: string]: Appointment[] } = {};
 
   private groupByPeriod(periodSize: number): void {
     this.groupedAppointments = {};
-    const sections = 12 / periodSize;
+    const sections = Math.ceil(12 / periodSize);
 
     for (let i = 0; i < sections; i++) {
-      const startMonth = i * periodSize + 1;
-      const endMonth = startMonth + periodSize - 1;
+      const startMonth = i * periodSize;
+      const endMonth = Math.min(startMonth + periodSize - 1, 11); 
 
-      const sectionLabel =
-        startMonth <= 9 && endMonth <= 9
-          ? `0${startMonth} - 0${endMonth}`
-          : `${startMonth} - ${endMonth}`;
+      const sectionLabel = `${String(startMonth + 1).padStart(
+        2,
+        '0'
+      )} - ${String(endMonth + 1).padStart(2, '0')}`;
+
       this.groupedAppointments[sectionLabel] = this.appointments.filter(
         (appointment) => {
-          const appointmentMonth = parseInt(appointment.date.split('-')[1], 10);
+          const appointmentMonth = new Date(appointment.date).getUTCMonth();
           return appointmentMonth >= startMonth && appointmentMonth <= endMonth;
         }
       );
     }
+  }
+
+  carregarConsultas() {
+    this.appointmentService.getAll().subscribe((appointments) => {
+      appointments.forEach((appointment) => {
+        const anoConsulta = new Date(appointment.date).getUTCFullYear();
+        console.log(
+          'Data do compromisso:',
+          appointment.date,
+          'Ano da consulta:',
+          anoConsulta
+        );
+
+        if (!this.anosComConsultas.includes(anoConsulta)) {
+          this.anosComConsultas.push(anoConsulta);
+        }
+      });
+      console.log('Anos com consultas', this.anosComConsultas);
+    });
   }
 }

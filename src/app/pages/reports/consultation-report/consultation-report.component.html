@@ -106,8 +106,9 @@
     <h3>Painel</h3>
 
     <div class="output">
-      <h4>Período | {{ section.key }}</h4>
+      <h4>Período ({{ section.key }})</h4>
 
+      @if (section.value.length > 0) {
       <table>
         <thead>
           <tr>
@@ -120,7 +121,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let appointment of section.value">
-            <td>{{ appointment.date }}</td>
+            <td>{{ appointment.date | date : "dd/MM/yyyy" }}</td>
             <td>{{ appointment.doctor }}</td>
             <td>{{ appointment.patient }}</td>
             <td>{{ appointment.appointmentType }}</td>
@@ -128,6 +129,9 @@
           </tr>
         </tbody>
       </table>
+      } @else {
+      <h3>Sem registro</h3>
+      }
     </div>
   </div>
 </div>
