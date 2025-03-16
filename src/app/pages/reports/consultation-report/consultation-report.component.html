@@ -8,15 +8,53 @@
     <legend>Dados</legend>
 
     <div class="flex-row">
-      <div class="form-group">
-        <label for="period">Período</label>
-        <select formControlName="period" name="period" id="period">
-          <option disabled selected value="">Selecione um período</option>
-          <option value="mensal">Mensal</option>
-          <option value="trimestral">Trimestral</option>
-          <option value="semestral">Semestral</option>
-          <option value="anual">Anual</option>
-        </select>
+      <div class="flex-column">
+        <div class="form-group">
+          <label for="period">Período</label>
+          <select formControlName="period" name="period" id="period">
+            <option disabled selected value="">Selecione um período</option>
+            <option value="mensal">Mensal</option>
+            <option value="trimestral">Trimestral</option>
+            <option value="semestral">Semestral</option>
+            <option value="anual">Anual</option>
+          </select>
+        </div>
+        <div class="container-errors">
+          <div
+            class="error"
+            *ngIf="
+              form.get('period')?.hasError('required') &&
+              form.get('period')?.touched
+            "
+          >
+            <i class="fa-solid fa-circle-exclamation"></i>
+            Obrigatório
+          </div>
+        </div>
+      </div>
+
+      <div class="flex-column">
+        <div class="form-group">
+          <label for="year">Ano</label>
+          <select formControlName="year" name="year" id="year">
+            <option disabled selected value="">Selecione o ano</option>
+            @for (year of anosComConsultas; track $index) {
+            <option value="{{ year }}">{{ year }}</option>
+            }
+          </select>
+        </div>
+        <div class="container-errors">
+          <div
+            class="error"
+            *ngIf="
+              form.get('year')?.hasError('required') &&
+              form.get('year')?.touched
+            "
+          >
+            <i class="fa-solid fa-circle-exclamation"></i>
+            Obrigatório
+          </div>
+        </div>
       </div>
 
       <div class="form-group">
@@ -26,7 +64,6 @@
           name="appointment-type"
           id="appointment-type"
         >
-          <option disabled selected value="">Selecione um tipo</option>
           <option disabled selected value="">Selecione um tipo</option>
           <option value="equipamentos-medicos">Equipamentos médicos</option>
           <option value="materiais-descartaveis">Materiais descartáveis</option>
