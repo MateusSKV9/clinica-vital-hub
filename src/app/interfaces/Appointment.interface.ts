@@ -3,7 +3,7 @@ import { Material } from './Material.interface';
 import { Patient } from './Patient.interface';
 
 export interface Appointment {
-  id: number;
+  id: string;
   doctor: Doctor;
   patient: Patient;
   appointmentType: string;

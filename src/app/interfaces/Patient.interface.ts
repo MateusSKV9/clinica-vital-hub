@@ -1,7 +1,7 @@
 import { Adress } from './Adress.interface';
 
 export interface Patient {
-  id: number;
+  id: string;
   name: string;
   dateOfBirth: string;
   bloodType: string;

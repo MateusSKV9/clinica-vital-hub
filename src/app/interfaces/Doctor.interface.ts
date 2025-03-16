@@ -1,7 +1,7 @@
 import { Adress } from './Adress.interface';
 
 export interface Doctor {
-  id: number;
+  id: string;
   name: string;
   specialty: string;
   crm: string;
