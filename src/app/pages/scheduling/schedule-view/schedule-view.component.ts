@@ -8,6 +8,8 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Doctor } from '../../../interfaces/Doctor.interface';
+import { DoctorService } from '../../../services/doctor/doctor.service';
 
 @Component({
   selector: 'app-schedule-view',
@@ -25,12 +27,14 @@ import { CommonModule } from '@angular/common';
 })
 export class ScheduleViewComponent implements OnInit {
   form!: FormGroup;
+  doctors: Doctor[] = [];
 
   ngOnInit(): void {
     this.initializeForm();
+    this.getAllDoctors();
   }
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private doctorService: DoctorService) {}
 
   initializeForm(): void {
     this.form = this.fb.group({
@@ -44,5 +48,11 @@ export class ScheduleViewComponent implements OnInit {
       this.form.markAllAsTouched();
       return;
     }
+  }
+
+  getAllDoctors(): void {
+    this.doctorService
+      .getAll()
+      .subscribe((doctors) => (this.doctors = doctors));
   }
 }

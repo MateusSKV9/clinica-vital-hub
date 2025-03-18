@@ -11,8 +11,11 @@
       <div class="flex-column">
         <div class="form-group">
           <label for="date">Médico</label>
-          <select formControlName="date" name="date" id="date">
-            <option disabled selected value="">Selecione a data</option>
+          <select formControlName="doctor" name="date" id="date">
+            <option disabled selected value="">Selecione o médico</option>
+            @for (doctor of doctors; track doctor.id) {
+            <option value="{{ doctor.name }}">{{ doctor.name }}</option>
+            }
           </select>
         </div>
         <div class="container-errors">
@@ -32,9 +35,7 @@
       <div class="flex-column">
         <div class="form-group">
           <label for="exam-type">Data</label>
-          <select formControlName="date" name="exam-type" id="exam-type">
-            <option disabled selected value="">Selecione a data</option>
-          </select>
+          <input formControlName="date" type="date" name="date" id="date" />
         </div>
         <div class="container-errors">
           <div
