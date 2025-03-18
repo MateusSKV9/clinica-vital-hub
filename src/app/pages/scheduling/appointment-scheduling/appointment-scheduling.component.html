@@ -13,6 +13,9 @@
           <label for="doctor">Médico</label>
           <select formControlName="doctor" name="doctor" id="doctor">
             <option disabled selected value="">Selecione um médico</option>
+            @for (doctor of doctors; track doctor.id) {
+            <option value="{{ doctor.name }}">{{ doctor.name }}</option>
+            }
           </select>
         </div>
         <div class="container-errors">
@@ -34,6 +37,9 @@
           <label for="patient">Paciente</label>
           <select formControlName="patient" name="patient" id="patient">
             <option disabled selected value="">Selecione um paciente</option>
+            @for (patient of patients; track patient.id) {
+            <option value="{{ patient.name }}">{{ patient.name }}</option>
+            }
           </select>
         </div>
         <div class="container-errors">

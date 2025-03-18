@@ -8,6 +8,12 @@ import {
   Validators,
   ReactiveFormsModule,
 } from '@angular/forms';
+import { Patient } from '../../../interfaces/Patient.interface';
+import { Doctor } from '../../../interfaces/Doctor.interface';
+import { PatientService } from '../../../services/patient/patient.service';
+import { DoctorService } from '../../../services/doctor/doctor.service';
+import { Material } from '../../../interfaces/Material.interface';
+import { MaterialService } from '../../../services/material/material.service';
 
 @Component({
   selector: 'app-appointment-scheduling',
@@ -26,9 +32,18 @@ export class AppointmentSchedulingComponent implements OnInit {
 
   ngOnInit(): void {
     this.initializeForm();
+    this.getAllDoctors();
+    this.getAllPatients();
   }
 
-  constructor(private fb: FormBuilder) {}
+  patients: Patient[] = [];
+  doctors: Doctor[] = [];
+
+  constructor(
+    private fb: FormBuilder,
+    private patientService: PatientService,
+    private doctorService: DoctorService
+  ) {}
 
   initializeForm(): void {
     this.form = this.fb.group({
@@ -44,5 +59,17 @@ export class AppointmentSchedulingComponent implements OnInit {
       this.form.markAllAsTouched();
       return;
     }
+  }
+
+  getAllPatients(): void {
+    this.patientService
+      .getAll()
+      .subscribe((patients) => (this.patients = patients));
+  }
+
+  getAllDoctors(): void {
+    this.doctorService
+      .getAll()
+      .subscribe((doctors) => (this.doctors = doctors));
   }
 }
