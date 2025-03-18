@@ -8,6 +8,8 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Patient } from '../../../interfaces/Patient.interface';
+import { PatientService } from '../../../services/patient/patient.service';
 
 @Component({
   selector: 'app-exam-scheduling',
@@ -23,12 +25,23 @@ import { CommonModule } from '@angular/common';
 })
 export class ExamSchedulingComponent implements OnInit {
   form!: FormGroup;
+  patients: Patient[] = [];
+
+  constructor(
+    private fb: FormBuilder,
+    private patientService: PatientService
+  ) {}
+
+  getAllPatients(): void {
+    this.patientService
+      .getAll()
+      .subscribe((patients) => (this.patients = patients));
+  }
 
   ngOnInit(): void {
     this.initializeForm();
+    this.getAllPatients();
   }
-
-  constructor(private fb: FormBuilder) {}
 
   initializeForm(): void {
     this.form = this.fb.group({
